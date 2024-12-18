@@ -1,9 +1,11 @@
+"use client";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Script from "next/script";
+import Loader from "./components/ui/Loader";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,10 +18,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "RideWafe",
-  description: "RideWafe taxi for users",
-};
 
 interface ILayoutProps {
   title?: string; 
@@ -48,12 +46,16 @@ export default function RootLayout({ children, title }: ILayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-      </body>
+        <>
+        <div style={{maxWidth: 480}} className="mx-auto relative overflow-hidden">
+           {isLoading ? <Loader/> : children}
+        </div>
+        </>
       <Script
           strategy="beforeInteractive"
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAP_KEY}&libraries=places`}
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`}
         />
+      </body>
       
     </html>
   );
