@@ -1,6 +1,11 @@
 import Image from "next/image";
-import Home from "./components/screens/home/Home";
+import Home from "./components/ui/home/Home";
 
 export default function HomePage() {
-  return <Home/>
+  return <div>
+
+    <a href="dashboard">
+      ahhahah
+    </a>
+  </div>
 }

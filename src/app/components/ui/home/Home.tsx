@@ -1,14 +1,14 @@
 import RootLayout from "@/app/layout"
 import Map from "./Map"
 
+
 const Home = () => {
   return (
-    <RootLayout title="Ride taxi wafe">
-        
-        <div>
+    <div >
+       
             <Map/>
-        </div>
-    </RootLayout>
+        
+    </div>
   )
 }
 

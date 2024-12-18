@@ -19,7 +19,7 @@
     "incremental": true,
     "typeRoots": [
       "./node_modules/@types",
-      "./src/types"
+      "types"
     ],
     "paths": {
       "@/*": [
