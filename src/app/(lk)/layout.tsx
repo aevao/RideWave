@@ -21,7 +21,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     };
   }, []);
 
-  console.log('Map API Key:', process.env.NEXT_PUBLIC_MAP_KEY);
+
 
   return (
     <div style={{ maxWidth: 480 }} className="m-auto relative overflow-hidden">

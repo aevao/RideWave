@@ -1,11 +1,12 @@
 import Image from "next/image";
-import Home from "./components/ui/home/Home";
+import Home from "./components/home/Home";
 
 export default function HomePage() {
   return <div>
-
+    <button>
     <a href="dashboard">
-      ahhahah
+      play
     </a>
+    </button>
   </div>
 }
