@@ -4,6 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import cn from "classnames";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { Coords } from "google-map-react";
+import { useTypedSelector } from "@/app/hooks/useTypedSelector";
 
 interface IInputPlaces {
   cbSuccess: (address: string, location:  Coords ) => void;
@@ -40,9 +41,15 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
     }
   }, [isFrom]);
 
+  const {travelTime} = useTypedSelector((state) => state.taxi);
   return (
     <div>
-      <PlacesAutocomplete value={address} onChange={setAddress} onSelect={handleSelect}>
+      <PlacesAutocomplete value={address} onChange={setAddress} onSelect={handleSelect} searchOptions={{
+          // Ограничиваем регион США
+          componentRestrictions: { country: "us" },
+        }}
+        googleCallbackName={`initAutocomplete`}
+        >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={cn("shadow-lg", { "mb-5": isFrom })}>
             <div
@@ -65,6 +72,10 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
                   className: "outline-none w-full text-gray-800",
                 })}
               />
+              {!isFrom && (<div className="absolute right-5 text-sm text-gray-400">
+                {travelTime ? `${travelTime } min. (${Math.ceil(travelTime/60)} h.)` : "-min" }  
+                   
+              </div>)}
             </div>
             <div
               style={{ color: "rgb(28 36 48)" }}
@@ -94,7 +105,7 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
           </div>
         )}
       </PlacesAutocomplete>
-      {error && <div className="text-red-500 mt-2">{error}</div>}
+
     </div>
   );
 };

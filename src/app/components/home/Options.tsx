@@ -32,7 +32,10 @@ const Options = () => {
                 {option.title}
               </div>
               <div className='text-md font-medium' style={{ color: '#222' }}>
-                $
+                {travelTime? new Intl.NumberFormat('ru-RU',{
+                  style: 'currency',
+                  currency: 'RUB',
+                }).format(travelTime * option.multiplier) : '- $'}
               </div>
             </div>
           </button>

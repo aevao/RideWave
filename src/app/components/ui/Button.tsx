@@ -9,7 +9,7 @@ interface IButton  extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 const Button: FC<IButton> = (props) => {
     const {title,color,bgColor,isDisabled,cb,...left} = props
-    console.log(isDisabled)
+
   return (
     <button
     {...left}
