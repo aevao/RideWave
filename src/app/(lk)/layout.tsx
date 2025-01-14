@@ -24,7 +24,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 
 
   return (
-    <div style={{ maxWidth: 480 }} className="m-auto relative overflow-hidden">
+    <div className="m-auto relative overflow-hidden">
       <div>
         {isLoading ? (
           <Loader />

@@ -11,11 +11,11 @@ import OrderButton from "./OrderButton";
 const Home = () => { 
   const [render,setRender] = useState(false)
   return (
-    <div >
+    <div  >
        
             <Map render ={render} setRender={setRender}/>
-        <div className="absolute z-10 left-5 w-11/12 bottom-10">
-      
+        <div className="absolute   w-3/12 bottom-10 right-10">
+
             <FromInput setRender={setRender} render={render}/>
             <ToInput />
             <Options/>
